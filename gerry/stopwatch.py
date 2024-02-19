@@ -1,4 +1,4 @@
-from time import perf_counter
+import time
 from typing import Optional
 
 
@@ -33,11 +33,11 @@ class Stopwatch:
     def __enter__(self):
         if self.print_start_and_end:
             print(f'Starting {self.name}...', end=' ⏳ ')
-        self.start = perf_counter()
+        self.start = time.perf_counter()
         return self
 
     def __exit__(self, type, value, traceback):
-        self.time = perf_counter() - self.start
+        self.time = time.perf_counter() - self.start
         if self.print:
             print(self)
 
